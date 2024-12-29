@@ -33,7 +33,9 @@ function Customersinfo() {
         </p>
       </div>
       <div className="flex items-center justify-center text-center">
-        <p>{/* <b>{yearExp}+</b> Years Of Training Experience */}</p>
+        <p>
+          <b>{yearExp}+</b> Years Of Training Experience
+        </p>
       </div>
       <div className="flex items-center justify-center text-center">
         <p>

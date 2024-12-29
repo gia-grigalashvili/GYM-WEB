@@ -1,4 +1,3 @@
-import React from "react";
 import { useServices } from "../../hooks/useFetchServices";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"; // Import Swiper styles

@@ -1,7 +1,6 @@
-import React from "react";
 import { useSuccessStory } from "../../hooks/useFetchSuccessStory";
 export default function StoryCarousel() {
-  const { data, error, isLoading } = useSuccessStory();
+  const { data } = useSuccessStory();
   console.log(data);
   const mappedImages = data?.about.map((item) => item.image);
   return (

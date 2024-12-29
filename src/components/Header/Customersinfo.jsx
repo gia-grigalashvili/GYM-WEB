@@ -14,7 +14,7 @@ function Customersinfo() {
       <div className="text-red-500 text-center p-2">Error: {error.message}</div>
     );
   }
-
+  console.log(data);
   const { experience } = data.about[0];
   const yearExp = experience;
 

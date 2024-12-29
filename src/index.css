@@ -3,7 +3,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+* {
+  margin: 0px;
+  padding: 0px;
+}
 @layer utilities {
   .text-light-gradient {
     background: linear-gradient(180deg, #fff 0%, rgba(153, 153, 153, 0.5) 100%);
@@ -11,4 +14,8 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+}
+
+body {
+  background-color: #121212;
 }

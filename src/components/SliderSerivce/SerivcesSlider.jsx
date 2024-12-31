@@ -2,7 +2,8 @@ import { useServices } from "../../hooks/useFetchServices";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"; // Import Swiper styles
 import BanerSkeleton from "../skeleton/BanerSkeleton";
-
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export default function ServicesSlider() {

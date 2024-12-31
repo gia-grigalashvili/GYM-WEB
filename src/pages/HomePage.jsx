@@ -3,6 +3,7 @@ import Customersinfo from "../components/Header/Customersinfo";
 
 import ServicesSlider from "../components/SliderSerivce/SerivcesSlider";
 import AboutME from "../components/about/AboutME";
+import StoryCarousel from "../components/SuccessStory/StoryCarousel";
 export default function HomePage() {
   return (
     <div>
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Customersinfo />
       <ServicesSlider />
       <AboutME />
+      <StoryCarousel />
     </div>
   );
 }

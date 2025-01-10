@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import BanerSkeleton from "../skeleton/BanerSkeleton";
 import { Grid } from "swiper/modules";
 import ThreeArrow from "/public/imgs/Frame 11.png";
-import FourArrow from "/public/imgs/Frame 112.png";
+
 export default function StoryCarousel() {
   const { data, error, isLoading } = useSuccessStory();
   const mappedImages = data?.about?.map((item) => item.image);
@@ -25,9 +25,9 @@ export default function StoryCarousel() {
   }
 
   return (
-    <div className="relative max-w-[1520px] w-full px-[2.5rem]">
+    <div className="relative pl-[100px] max-w-[1720px] w-full px-[2.5rem]">
       <div className="border-[#4D4D4D] border-[1px] p-10 bg-[#121212]  rounded-2xl mx-0">
-        <div className="flex justify-start items-center gap-6 mb-10">
+        <div className="flex justify-start  items-center gap-6 mb-10">
           <img src={ThreeArrow} alt="" className="rotate" />
           <p
             className="uppercase font-bold"
@@ -49,15 +49,19 @@ export default function StoryCarousel() {
           breakpoints={{
             640: { slidesPerView: 2, grid: { rows: 1 } },
             768: { slidesPerView: 2, grid: { rows: 2 } },
-            1024: { slidesPerView: 3, grid: { rows: 1 }, spaceBetween: 50 },
+            1024: {
+              slidesPerView: 3,
+              grid: { rows: 1 },
+              spaceBetween: 100,
+            },
           }}
         >
           {mappedImages.map((image, index) => (
             <SwiperSlide key={index}>
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center  items-center">
                 <img
                   src={image}
-                  alt={`Success Story Image ${index + 1}`}
+                  // alt={`Success Story Image ${index + 1}`}
                   className="w-full lg:h-[215px] h-[167px] object-center rounded-lg hover:scale-105 transition-transform duration-300"
                 />
               </div>

@@ -4,6 +4,7 @@ import Customersinfo from "../components/Header/Customersinfo";
 import ServicesSlider from "../components/SliderSerivce/SerivcesSlider";
 import AboutME from "../components/about/AboutME";
 import StoryCarousel from "../components/SuccessStory/StoryCarousel";
+import Contact from "../components/Contact/Contact";
 export default function HomePage() {
   return (
     <div>
@@ -12,6 +13,7 @@ export default function HomePage() {
       <ServicesSlider />
       <AboutME />
       <StoryCarousel />
+      <Contact />
     </div>
   );
 }

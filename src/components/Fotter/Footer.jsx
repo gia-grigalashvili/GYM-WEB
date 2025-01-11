@@ -2,7 +2,7 @@ import React from "react";
 import Instagram from "/public/imgs/instagram.png";
 import Facebook from "/public/imgs/facebook.png";
 import Tiktok from "/public/imgs/tiktok.png";
-import Twitter from "/public/imgs/tiktok.png";
+import Twitter from "/public/imgs/tiw.png";
 import Logo from "/public/imgs/Frame 61.png";
 import { Link } from "react-router-dom";
 export default function Footer() {
@@ -33,7 +33,7 @@ export default function Footer() {
             {navNames.map((item, index) => (
               <ul key={index}>
                 <Link to={item.path}>
-                  <li className="text-[#C4C4C4] text-[0.75rem] hover:text-[#D7FD44] transition-transform hover:scale-125 duration-500">
+                  <li className="text-[#C4C4C4] text-[18px] hover:text-[#D7FD44] transition-transform hover:scale-125 duration-500">
                     {item.name}
                   </li>
                 </Link>
@@ -49,7 +49,7 @@ export default function Footer() {
         </div>
 
         {
-          <div className=" flex flex-col gap-6">
+          <div className=" flex  gap-6">
             <img className="w-6 h-6" src={Facebook} alt="" />
             <img className="w-6 h-6" src={Instagram} alt="" />
             <img className="w-6 h-6" src={Tiktok} alt="" />

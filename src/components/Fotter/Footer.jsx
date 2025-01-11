@@ -1,4 +1,3 @@
-import React from "react";
 import Instagram from "/public/imgs/instagram.png";
 import Facebook from "/public/imgs/facebook.png";
 import Tiktok from "/public/imgs/tiktok.png";

@@ -8,6 +8,7 @@ import "swiper/css/grid";
 import { Grid } from "swiper/modules";
 import ThreeArrow from "/public/imgs/Frame 11.png";
 import { grid } from "ldrs";
+import StoryCarouselImgs from "./StoryCarouselImgs";
 grid.register();
 export default function StoryCarousel() {
   const { data, error, isLoading } = useSuccessStory();
@@ -74,13 +75,7 @@ export default function StoryCarousel() {
         >
           {mappedImages?.map((image, index) => (
             <SwiperSlide key={index}>
-              <div className="flex justify-center items-center">
-                <img
-                  src={image}
-                  alt={`Success Story ${index + 1}`}
-                  className="w-full h-[215px]  object-center rounded-lg"
-                />
-              </div>
+              <StoryCarouselImgs index={index} image={image} />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -5,10 +5,11 @@ import BanerSkeleton from "../skeleton/BanerSkeleton";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "react-loading-skeleton/dist/skeleton.css";
+import ServiceSliderContet from "./ServiceSliderContet";
 
 export default function ServicesSlider() {
   const { data, isLoading } = useServices();
-  const services = data?.data || [];
+  const services = data?.data;
   const loadingPlaceholderCount = 5;
 
   if (isLoading) {
@@ -33,26 +34,12 @@ export default function ServicesSlider() {
               key={service?.id || index}
               className="cursor-pointer rounded-2xl  max-w-[305px] lg:max-w-[295px] border border-[#D7FD44] m-4"
             >
-              <div className="flex flex-col items-center justify-between p-5 h-[320px] group">
-                {isLoading ? (
-                  <div className="flex justify-center items-center w-full h-[240px]"></div>
-                ) : (
-                  <img
-                    className="w-full h-[240px] object-cover rounded-lg transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-                    src={service.image}
-                    alt={service.name}
-                  />
-                )}
-
-                {/* Name Placeholder or Service Name */}
-                <span className="mt-3 text-white font-bold py-[2px] text-center">
-                  {service.name}
-                </span>
-
-                <span className="subtext text-sm max-h-0 overflow-hidden group-hover:max-h-[100px] text-white transition-all duration-500 ease-in-out mt-1 text-center">
-                  {service.description}
-                </span>
-              </div>
+              <ServiceSliderContet
+                description={service.description}
+                image={service.image}
+                name={service.name}
+                isLoading={isLoading}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

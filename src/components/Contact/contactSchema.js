@@ -4,7 +4,7 @@ export const contactSchema = Yup.object().shape({
   user_name: Yup.string()
     .required("Full name is required")
     .test("has-space", "It's not a full name", (value) => {
-      return value && value.includes(" ");
+      return value && value.includes("");
     }),
   user_email: Yup.string()
     .email("Invalid email format")

@@ -53,16 +53,16 @@ export default function Contact() {
         isMobile ? " items-center" : "max-w-2xl"
       } w-[1000px] shadow-lg rounded-lg px-10 pt-10 pb-[10.5rem] `}
     >
-      <h2 className="gradient-text font-nunito text-[0.875rem] font-bold uppercase mb-4">
+      <h1 className="lg:text-[20px] text-[18px] text-light-gradient font-extrabold font-openSans text-[#ffffffe5]">
         Contact
-      </h2>
+      </h1>
 
       <form ref={form} onSubmit={sendEmail} className="space-y-4">
         <div>
           <input
             type="text"
             name="user_name"
-            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-full focus:outline-none focus:ring-2 ${
+            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-[300px] lg:w-full focus:outline-none focus:ring-2 ${
               errors.user_name ? "border-red-500" : "border-[#4D4D4D]"
             } focus:ring-blue-500 focus:border-blue-500`}
             placeholder="Full Name"
@@ -76,7 +76,7 @@ export default function Contact() {
           <input
             type="text"
             name="user_email"
-            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-full focus:outline-none focus:ring-2 ${
+            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-[300px] lg:w-full focus:outline-none focus:ring-2 ${
               errors.user_email ? "border-red-500" : "border-[#4D4D4D]"
             } focus:ring-blue-500 focus:border-blue-500`}
             placeholder="Email"
@@ -90,7 +90,7 @@ export default function Contact() {
           <input
             type="number"
             name="user_phone"
-            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-full focus:outline-none focus:ring-2 ${
+            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-[300px] lg:w-full focus:outline-none focus:ring-2 ${
               errors.user_phone ? "border-red-500" : "border-[#4D4D4D]"
             } focus:ring-blue-500 focus:border-blue-500 no-arrows`}
             placeholder="Phone number"
@@ -103,7 +103,7 @@ export default function Contact() {
         <div>
           <textarea
             name="message"
-            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-full focus:outline-none focus:ring-2 ${
+            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-[300px] lg:w-full focus:outline-none focus:ring-2 ${
               errors.message ? "border-red-500" : "border-[#4D4D4D]"
             } focus:ring-blue-500 focus:border-blue-500`}
             rows="5"
@@ -115,11 +115,11 @@ export default function Contact() {
           )}
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex lg:justify-end">
           <input
             type="submit"
             value="Send"
-            className="px-4 py-2 border-[#4D4D4D] border-[1px] text-[#C4C4C499] w-[35%] rounded-lg  hover:text-black  duration-700 hover:bg-[#D7FD44] hover:scale-105 hover:transition-transform cursor-pointer"
+            className="px-4 py-2 border-[#4D4D4D] border-[1px] text-[#C4C4C499] w-[25%] lg:w-[35%] rounded-lg  hover:text-black   hover:bg-[#D7FD44] hover:scale-105 hover:transition-transform cursor-pointer"
           />
           <ToastContainer />
         </div>

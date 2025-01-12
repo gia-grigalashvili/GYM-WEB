@@ -1,7 +1,7 @@
 import { useSuccessStory } from "../../hooks/useFetchSuccessStory";
 import { Swiper, SwiperSlide } from "swiper/react";
 import BanerSkeleton from "../skeleton/BanerSkeleton";
-import arrow from "/public/imgs/Group 9.png";
+import arrow from "/public/imgs/arrow1.png";
 
 import "swiper/css";
 import "swiper/css/grid";

@@ -2,13 +2,14 @@ import { useState } from "react";
 import Logo from "/public/imgs/Frame 61.png";
 import { Twirl as Hamburger } from "hamburger-react";
 import LOGO2 from "/public/imgs/TRANSFORM WITH TUNA.png";
+import Stories from "../../pages/Stories";
 import { Link } from "react-router-dom";
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Stories", path: "/stories" },
+    { name: "Stories", path: "/Stories" },
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
     { name: "Blogs", path: "/blogs" },

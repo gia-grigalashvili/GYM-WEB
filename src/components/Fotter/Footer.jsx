@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   const navNames = [
     { name: "Home", path: "/" },
-    { name: "About Me", path: "/stories" },
+    { name: "Stories", path: "/stories" },
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
     { name: "Blogs", path: "/blogs" },

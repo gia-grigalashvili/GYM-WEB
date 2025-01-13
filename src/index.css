@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 * {
   margin: 0px;
   padding: 0px;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer utilities {
   .text-light-gradient {
     background: linear-gradient(180deg, #fff 0%, rgba(153, 153, 153, 0.5) 100%);

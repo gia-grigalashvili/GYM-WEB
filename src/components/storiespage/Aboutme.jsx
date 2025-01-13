@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useFetchAbout } from "../../hooks/useFetchAbout";
 import arrows from "/public/imgs/arrow1.png";
 import star from "/public/imgs/Star1.png";
@@ -26,7 +25,7 @@ export default function Aboutme() {
   const part3 = words.slice(Math.ceil((words.length * 2) / 3)).join(" ");
 
   return (
-    <div className="flex flex-col mt-[100px] gap-5 text-[#C4C4C4] leading-[27.2px] text-[18px]">
+    <div className="flex flex-col pl-[50px] pr-[50px] mt-[100px] gap-5 text-[#C4C4C4] leading-[27.2px] text-[18px]">
       <div className="flex gap-3 items-center">
         <img src={arrows} className="w-[80px]" alt="Arrows Icon" />
         <h3

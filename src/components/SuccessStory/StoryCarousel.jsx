@@ -31,7 +31,7 @@ export default function StoryCarousel() {
   }
 
   return (
-    <div className="relative pl-[40px] mt-[100px] max-w-[1820px] w-full px-[2.5rem]">
+    <div className="relative  mt-[100px] max-w-[1820px] w-full px-[4.5rem]">
       <div className="border-[#4D4D4D] border-[1px] p-10 bg-[#121212]  rounded-2xl mx-0">
         <div className="flex justify-start  items-center gap-6 mb-10">
           <img src={ThreeArrow} alt="" className="rotate block lg:hidden" />

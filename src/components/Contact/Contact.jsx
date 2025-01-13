@@ -53,7 +53,7 @@ export default function Contact() {
     <div
       className={`${
         isMobile ? "items-center" : "max-w-2xl"
-      } w-[1000px] shadow-lg rounded-lg px-10 pt-10 pb-[10.5rem]`}
+      } w-[1000px] shadow-lg rounded-lg px-10 pt-10`}
     >
       <h1 className="lg:text-[20px] text-[18px] text-light-gradient font-extrabold font-openSans text-[#ffffffe5]">
         Contact

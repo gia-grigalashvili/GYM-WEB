@@ -1,12 +1,12 @@
 import React from "react";
 import star from "/public/imgs/Star1.png";
 import corekct from "/public/imgs/coreckt.png";
-export default function CertificationMap({ endDate, name, startDate, i }) {
+export default function CertificationMap({ endDate, name, startDate, id }) {
   return (
     <div>
       {" "}
       <div
-        key={i}
+        key={id}
         className="flex items-center justify-between bg-[#323232] hover:bg-[#3e3e3e] p-6 rounded-lg shadow-xl cursor-pointer transform scale-100 hover:scale-105 transition-transform duration-300"
       >
         <span className="flex text-[#FFFFFF] leading-[21.8px] items-start text-[14px] gap-2 w-[50%]">

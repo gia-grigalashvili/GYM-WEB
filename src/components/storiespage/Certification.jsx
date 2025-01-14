@@ -8,7 +8,7 @@ import Footer from "../Fotter/Footer";
 export default function Certification() {
   return (
     <div className="flex mt-[50px] justify-center flex-col ">
-      <img className="w-[] px-[100px]" src={Girlsport} alt="" />
+      <img className="px-[50px] lg:px-[100px]" src={Girlsport} alt="" />
       <Aboutme />
       <CeriFIcationComp />
       <StoryCarousel />

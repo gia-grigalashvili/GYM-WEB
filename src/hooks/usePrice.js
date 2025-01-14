@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchPrices } from "../services/GymApi";
+import { fetchPrices } from "../services/FetchPrices";
 
 export const usePrice = () => {
   return useQuery({

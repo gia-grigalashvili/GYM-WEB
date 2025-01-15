@@ -21,7 +21,7 @@ export default function CertificationComp() {
   }
 
   return (
-    <div className="text-white md:grid-cols-2 md:grid  pl-[50px] pr-[50px] mt-[100px] bg-[#121212] flex flex-col gap-10 mb-[5rem]">
+    <div className="text-white md:grid-cols-2 md:grid  pl-[20px] pr-[20px] mt-[100px] bg-[#121212] flex flex-col gap-10 mb-[5rem]">
       {certification.map((certification) => (
         <CertificationMap
           key={certification.id}

@@ -2,7 +2,7 @@ import React from "react";
 import blogman from "/public/imgs/traning.png";
 export default function BlogHeader() {
   return (
-    <div className="flex flex-col items-center gap-10 pt-10">
+    <div className="flex px-[10px] flex-col items-center gap-10 pt-10">
       <h1 className="text-[#C4C4C4] text-[40px] font-normal text-center">
         PRIVATE PERSONAL TRAINING
       </h1>

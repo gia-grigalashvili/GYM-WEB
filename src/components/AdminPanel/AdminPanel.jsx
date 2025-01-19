@@ -17,5 +17,6 @@ const shema = Yup.object().shape({
     }),
 });
 export default function AdminPanel() {
+  const navigate = useNavigate();
   return <div></div>;
 }

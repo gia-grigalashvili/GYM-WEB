@@ -31,7 +31,7 @@ export default function Prices() {
 
   return (
     <div className="lg:flex flex-col justify-center items-center w-full">
-      <div className="px-[2.5rem] mt-[5rem] pb-[5.5rem] w-full relative max-w-[1520px]">
+      <div className="px-[2.5rem] mt-[5rem] lg:pb-[3.5rem]  w-full relative max-w-[1520px]">
         <div className="flex justify-center flex-col">
           <p
             className="uppercase font-bold text-[2rem]"

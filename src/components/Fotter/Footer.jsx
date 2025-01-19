@@ -32,7 +32,7 @@ export default function Footer() {
             {navNames.map((item, index) => (
               <ul key={index}>
                 <Link to={item.path}>
-                  <li className="text-[#C4C4C4] text-[18px] hover:text-[#D7FD44] transition-transform hover:scale-125 duration-500">
+                  <li className="text-[#C4C4C4] text-[18px] hover:text-[#D7FD44] transition-transform  lg:hover:scale-125 duration-500">
                     {item.name}
                   </li>
                 </Link>

@@ -50,11 +50,7 @@ export default function Contact() {
   };
 
   return (
-    <div
-      className={`${
-        isMobile ? "items-center" : "max-w-2xl"
-      } w-[1000px] shadow-lg rounded-lg px-10 pt-10`}
-    >
+    <div className="flex flex-col w-full p-[30px] max-w-[350px]  lg:max-w-[450px]">
       <h1 className="lg:text-[20px] text-[18px] text-light-gradient font-extrabold font-openSans text-[#ffffffe5]">
         Contact
       </h1>
@@ -64,21 +60,20 @@ export default function Contact() {
         onSubmit={handleSubmit(sendEmail)}
         className="space-y-4"
       >
-        <div>
-          <input
-            type="text"
-            {...register("user_name")}
-            className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-[300px] lg:w-full focus:outline-none focus:ring-2 ${
-              errors.user_name ? "border-red-500" : "border-[#4D4D4D]"
-            } focus:ring-blue-500 focus:border-blue-500`}
-            placeholder="Full Name"
-          />
-          {errors.user_name && (
-            <p className="text-red-500 text-sm mt-2">
-              {errors.user_name.message}
-            </p>
-          )}
-        </div>
+        <input
+          type="text"
+          {...register("user_name")}
+          className={`mt-1 px-3 py-2 bg-transparent text-white placeholder:text-[#C4C4C499] border rounded-lg w-[300px] lg:w-full focus:outline-none focus:ring-2 ${
+            errors.user_name ? "border-red-500" : "border-[#4D4D4D]"
+          } focus:ring-blue-500 focus:border-blue-500`}
+          placeholder="Full Name"
+        />
+        {errors.user_name && (
+          <p className="text-red-500 text-sm mt-2">
+            {errors.user_name.message}
+          </p>
+        )}
+
         <div>
           <input
             type="email"

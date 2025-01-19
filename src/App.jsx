@@ -5,7 +5,10 @@ import Servicies from "./pages/Servicies";
 import Contact from "./pages/Contact";
 import BlogsPage from "./pages/BlogsPage";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
-import AdminHeader from "./components/AdminPanel/Header/AdminHeader";
+
+import AdminLayout from "./Layouts/AdminLayout";
+
+import AboutMe from "./pages/AdminPage/AboutMe";
 function App() {
   return (
     <>
@@ -17,8 +20,11 @@ function App() {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Blogs" element={<BlogsPage />} />
 
-          <Route path="admin/login" element={<AdminPanel />} />
-          <Route path="/admin-dashboard" element={<AdminHeader />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AboutMe />} />
+
+            <Route path="stories" element={<AboutMe />} />
+          </Route>
         </Route>
       </Routes>
     </>

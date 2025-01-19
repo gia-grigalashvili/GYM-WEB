@@ -26,7 +26,8 @@ export default function AdminPanel() {
     resolver: yupResolver(shema),
   });
   const onSubmit = async () => {
-    navigate("/admin-dashboard");
+    sessionStorage.setItem("adminLogin", "true");
+    navigate("admin/stories");
   };
   return (
     <div>

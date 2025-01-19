@@ -5,6 +5,7 @@ import Servicies from "./pages/Servicies";
 import Contact from "./pages/Contact";
 import BlogsPage from "./pages/BlogsPage";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
+import AdminHeader from "./components/AdminPanel/Header/AdminHeader";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Blogs" element={<BlogsPage />} />
 
           <Route path="admin/login" element={<AdminPanel />} />
+          <Route path="/admin-dashboard" element={<AdminHeader />} />
         </Route>
       </Routes>
     </>

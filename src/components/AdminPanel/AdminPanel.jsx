@@ -34,14 +34,14 @@ export default function AdminPanel() {
         className="flex items-center justify-center min-h-screen"
         style={{
           backgroundImage:
-            "url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDkya3Rid3J1a214cHVoZmV0aDNnaGN6anc3bW12NXV4MXRnYXV3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qrBN3xzrJ0EHMqw0km/giphy.gif)",
+            "url(https://cdn-icons-gif.flaticon.com/8121/8121259.gif)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-[#1E1E1E] p-8 rounded-lg shadow-md space-y-6 lg:w-[30%] h-[300px]"
+          className="bg-[#1E1E1E] p-8 rounded-lg shadow-md space-y-6 lg:w-[30%] "
         >
           <h2 className="text-center text-[#D7FD44] font-semibold text-2xl mb-4">
             Admin Panel Login

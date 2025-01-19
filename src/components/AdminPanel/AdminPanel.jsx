@@ -25,5 +25,8 @@ export default function AdminPanel() {
   } = useForm({
     resolver: yupResolver(shema),
   });
+  const onSubmit = async () => {
+    navigate("/admin-dashboard");
+  };
   return <div></div>;
 }

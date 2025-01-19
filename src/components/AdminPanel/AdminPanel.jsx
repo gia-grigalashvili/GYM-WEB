@@ -18,5 +18,12 @@ const shema = Yup.object().shape({
 });
 export default function AdminPanel() {
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(shema),
+  });
   return <div></div>;
 }

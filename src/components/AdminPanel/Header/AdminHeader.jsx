@@ -13,7 +13,11 @@ export default function AdminHeader() {
 
       <div className="flex  gap-6">
         <div className="w-10 h-10 rounded-full">
-          <img className=" rounded-full" src={Image} alt="About avatar" />
+          <img
+            className="w-10 h-10 rounded-full"
+            src={Image}
+            alt="About avatar"
+          />
         </div>
       </div>
     </div>

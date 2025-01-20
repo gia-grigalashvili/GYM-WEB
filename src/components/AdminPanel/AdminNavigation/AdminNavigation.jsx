@@ -11,7 +11,7 @@ export default function AdminNavigation() {
     <div>
       {" "}
       <div className=" flex items-center justify-center">
-        <ul className="  flex items-center justify-center max-w-[520px] gap-2 bg-[#222]  rounded-[12.5rem]  border-[#4D4D4D] z-10">
+        <ul className="  flex items-center justify-center max-w-[520px] gap-2 bg-[#222] px-3 p-3  rounded-[12.5rem]  border-[#4D4D4D] z-10">
           {navLink?.map(({ name, path }) => {
             const isActive = location.pathname === path;
 
@@ -25,7 +25,7 @@ export default function AdminNavigation() {
                 <Link
                   to={path}
                   //   onClick={handleNavClick}
-                  className={`font-Nunito text-[1rem] font-[700] leading-normal ${
+                  className={`font-Nunito text-[1.3rem] font-[700] leading-normal ${
                     isActive ? "text-black" : "text-white"
                   }`}
                 >

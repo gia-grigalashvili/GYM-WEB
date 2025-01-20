@@ -1,5 +1,7 @@
 import React from "react";
 import { useFetchAbout } from "../../../../hooks/useFetchAbout";
+import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 export default function AboutHeader() {
   const { data, isLoading, isError, error: aboutError } = useFetchAbout();
   const Image = data?.about?.at(-1)?.image;
@@ -26,12 +28,12 @@ export default function AboutHeader() {
           />
 
           <div className="flex gap-4">
-            <div className="border-[1px] border-[#D7FD44] bg-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer  text-black">
+            <div className="border-[1px] border-[#D7FD44] flex px-10 bg-[#D7FD44]  rounded-3xl gap-[5px]  p-[10px] text-center cursor-pointer  text-black">
               <p className="w-3 h-3">+</p>
               <p className="text-[16px] font-bold ">Upload New</p>
             </div>
 
-            <div className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer  text-black">
+            <div className="border-[1px] border-[#D7FD44] flex px-10  gap-[5px]   rounded-3xl  p-[10px] text-center cursor-pointer  text-black">
               <h1 className="text-[#D7FD44] font-bold ">
                 Remove Profile Picture
               </h1>

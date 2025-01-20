@@ -1,12 +1,8 @@
 import React from "react";
-import { useFetchAbout } from "../../../hooks/useFetchAbout";
+import { useFetchAbout } from "../../../../hooks/useFetchAbout";
 export default function AboutHeader() {
-  const {
-    data: getAbout,
-    isLoading,
-    isError,
-    error: aboutError,
-  } = useFetchAbout();
+  const { data, isLoading, isError, error: aboutError } = useFetchAbout();
+  const Image = data?.about?.at(-1)?.image;
   return (
     <div>
       <div className="flex flex-col my-[3.25rem]">
@@ -26,33 +22,28 @@ export default function AboutHeader() {
           <div>
             <img
               className="rounded-full w-[5rem] h-[5rem]"
-              // src={imagePreview || AboutImage || ""}
+              src={Image || ""}
               alt="Profile"
             />
           </div>
           <div className="flex gap-4">
-            <label className="border-[1px] border-[#D7FD44] bg-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[12.1875rem] text-black">
+            <label className="border-[1px] border-[#D7FD44] bg-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer  text-black">
               <p className="w-3 h-3">+</p>
-              <p>Upload New</p>
-              <input
-                type="file"
-                accept="image/*"
-                //   className="hidden"
-                //   {...register("image", {
-                //     required: "Please upload an image",
-                //     onChange: handleImagePreview,
-                //   })}
-              />
+              <p className="text-[16px] font-bold ">Upload New</p>
             </label>
-            {/* {errors.image && (
-                <p className="text-red-500 text-sm">{errors.image.message}</p>
-              )} */}
+
+            <div className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer  text-black">
+              <h1 className="text-[#D7FD44] font-bold ">
+                Remove Profile Picture
+              </h1>
+            </div>
           </div>
         </div>
 
         <button
           type="submit"
-          className="mt-4 bg-[#D7FD44] text-black px-6 py-2 rounded-3xl"
+          // className="mt-4 bg-[#D7FD44] text-black px-6 py-2 rounded-3xl"
+          className="flex items-center bg-[#D7FD44] max-w-[12rem] rounded-3xl  p-[10px] text-center"
         >
           Save Changes
         </button>

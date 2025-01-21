@@ -3,7 +3,7 @@ import { useFetchAbout } from "../../../../hooks/useFetchAbout";
 export default function Sharestory() {
   const { data, isLoading, error, isError } = useFetchAbout();
   console.log(data);
-  const { story, experience } = data.about[0];
+  //   const { story, experience } = data.about[0];
   return (
     <div className="flex flex-col gap-[50px]">
       {" "}
@@ -15,7 +15,7 @@ export default function Sharestory() {
           name="story"
           cols="30"
           rows="7"
-          defaultValue={story}
+          //   defaultValue={story}
         ></textarea>
       </div>
       <div>
@@ -25,7 +25,7 @@ export default function Sharestory() {
           name="experience"
           placeholder="add your experience"
           className="placeholder:w-[34rem] w-full p-[0.625rem] rounded-2xl bg-[#323232] text-white font-light placeholder:text-[#C4C4C4]"
-          defaultValue={experience}
+          //   defaultValue={experience}
         />
       </div>
     </div>

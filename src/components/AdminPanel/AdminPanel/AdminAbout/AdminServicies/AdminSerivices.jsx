@@ -1,7 +1,18 @@
 import React from "react";
-import { usePrice } from "../../../hooks/usePrice";
+import { usePrice } from "../../../../../hooks/usePrice";
+import ARROW from "/public/imgs/arrowbig.png";
 export default function AdminSerivices() {
   const { data, error, isLoading } = usePrice();
+  const [arrowClick, setArrowClick] = useState([]);
+  const handleToggle = (index) => {
+    setArrowClick((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
+  const { mutate: deleteServices } = useDeleteServices();
+  const handleDelete = (id) => {
+    deleteServices(id);
+  };
   return (
     <div>
       {" "}
@@ -26,12 +37,12 @@ export default function AdminSerivices() {
           ? Array.from({ length: 5 }).map((_, index) => (
               <div key={index} className="w-full mt-7">
                 <div className="bg-[#222] rounded-[8.75rem] px-8 py-6 flex items-center justify-between">
-                  <Skeleton className="w-1/2 h-[2rem]" />
-                  <Skeleton circle className="w-[3.375rem] h-[3.375rem]" />
+                  {/* <Skeleton className="w-1/2 h-[2rem]" />
+                  <Skeleton circle className="w-[3.375rem] h-[3.375rem]" /> */}
                 </div>
               </div>
             ))
-          : priceData.map((item, index) => (
+          : data?.about.map((item, index) => (
               <div
                 key={index}
                 className={`w-full mt-7 bg-[#222] ${
@@ -50,7 +61,7 @@ export default function AdminSerivices() {
                       className="bg-[#D7FD44] rounded-full w-[3.375rem] h-[3.375rem] flex items-center justify-center"
                     >
                       <img
-                        src={DownArrow}
+                        src={ARROW}
                         alt="Expand section"
                         className={`transition-transform duration-300 w-[1.58206rem] h-[1.58206rem] ${
                           arrowClick.includes(index)
@@ -110,7 +121,7 @@ export default function AdminSerivices() {
               </div>
             ))}
 
-        {isModalOpen && (
+        {/* {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <ServicesModal />
           </div>
@@ -119,7 +130,7 @@ export default function AdminSerivices() {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <EditModal />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

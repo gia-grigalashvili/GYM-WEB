@@ -146,8 +146,6 @@ export default function Servicesaddd({ onemodal }) {
             </button>
           </div>
         </form>
-
-        {/* <ToastContainer /> */}
       </div>
     </div>
   );

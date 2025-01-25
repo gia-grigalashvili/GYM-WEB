@@ -10,6 +10,7 @@ import AdminLayout from "./Layouts/AdminLayout";
 
 import AboutMe from "./pages/AdminPage/AboutMe";
 import AdminSerivices from "./components/AdminPanel/AdminPanel/AdminAbout/AdminServicies/AdminSerivices";
+import AdminBlog from "./pages/AdminPage/AdminBlog";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
 
             <Route path="stories" element={<AboutMe />} />
             <Route path="Servicies" element={<AdminSerivices />} />
+            <Route path="Blogs" element={<AdminBlog />} />
           </Route>
         </Route>
       </Routes>

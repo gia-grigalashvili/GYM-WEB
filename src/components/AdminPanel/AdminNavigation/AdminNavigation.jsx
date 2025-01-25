@@ -4,7 +4,7 @@ export default function AdminNavigation() {
   const navLink = [
     // {name: "Dashboard", path: "/admin/dashboard"},
     { name: "Stories", path: "/admin/stories" },
-    { name: "Services", path: "/admin/admin-services" },
+    { name: "Servicies", path: "/admin/Servicies" },
     { name: "Blogs", path: "/admin/blogs" },
   ];
   return (

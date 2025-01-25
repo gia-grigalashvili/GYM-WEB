@@ -9,6 +9,7 @@ import AdminPanel from "./components/AdminPanel/AdminPanel";
 import AdminLayout from "./Layouts/AdminLayout";
 
 import AboutMe from "./pages/AdminPage/AboutMe";
+import AdminSerivices from "./components/AdminPanel/AdminPanel/AdminAbout/AdminServicies/AdminSerivices";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
             <Route index element={<AboutMe />} />
 
             <Route path="stories" element={<AboutMe />} />
+            <Route path="Servicies" element={<AdminSerivices />} />
           </Route>
         </Route>
       </Routes>

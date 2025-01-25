@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-// import Cancel from "/cancel.svg";
-import { Cross } from "hamburger-react";
+import React, { useContext, useState } from "react";
+
+import cross from "/public/imgs/CROSS.png";
 import useAddService from "../../../../../hooks/useAddSerivices";
 import { useForm } from "react-hook-form";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
-export default function Servicesaddd() {
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+export default function Servicesaddd({ onemodal }) {
   const { addServicesInfo } = useAddService();
 
   const {
@@ -44,9 +45,9 @@ export default function Servicesaddd() {
           </div>
           <div
             className="bg-[#D7FD44] flex py-4 px-4 items-center justify-center rounded-full cursor-pointer"
-            // onClick={closeModal}
+            onClick={onemodal}
           >
-            <img src={Cross} alt="Close" />
+            <img src={cross} alt="Close" />
           </div>
         </div>
 

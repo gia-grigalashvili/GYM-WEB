@@ -13,6 +13,7 @@ export default function AdminSerivices() {
   const onemodal = () => {
     setOpenModal(!openModal);
   };
+  console.log(onemodal);
   const [arrowClick, setArrowClick] = useState([]);
   const handleToggle = (index) => {
     setArrowClick((prev) =>

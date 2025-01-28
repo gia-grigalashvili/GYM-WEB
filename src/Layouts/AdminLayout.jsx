@@ -8,14 +8,6 @@ import AdminPanel from "../components/AdminPanel/AdminPanel";
 export default function AdminLayout() {
   const isLogined = !!sessionStorage.getItem("adminLogin");
 
-  //   if (isLogined && location.pathname === "/admin/login") {
-  //     return <Navigate to="/admin/stories" replace />;
-  //   }
-
-  //   if (!isLogined && location.pathname !== "/admin/login") {
-  //     return <Navigate to="/admin/login" state={{ from: location }} replace />;
-  //   }
-
   return (
     <div className="bg-[#121212]">
       {isLogined ? (

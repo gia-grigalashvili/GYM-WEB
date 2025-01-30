@@ -25,7 +25,7 @@ export default function DataAbout({
         key={index}
         className={`w-full mt-7 bg-[#222] ${
           arrowClick.includes(index) ? "rounded-xl" : "rounded-[8.75rem]"
-        } px-8 py-6 flex flex-col cursor-pointer transition-all duration-500`}
+        } px-8 py-3 lg:py-6 flex flex-col cursor-pointer transition-all duration-500`}
       >
         <div className="flex items-center justify-between">
           <p className="text-[1.25rem] font-bold text-[#C4C4C4] uppercase">

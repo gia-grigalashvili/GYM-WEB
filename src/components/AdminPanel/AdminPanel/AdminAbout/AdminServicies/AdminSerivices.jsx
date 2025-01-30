@@ -35,16 +35,16 @@ export default function AdminSerivices() {
   return (
     <div>
       {" "}
-      <div className="relative px-[5rem] mt-[5rem] pb-[10.5rem]">
+      <div className="relative px-[1rem] lg:px-[5rem] mt-[5rem] pb-[10.5rem]">
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-4">
-            <p className="uppercase font-bold text-[1.5rem] text-white">
+            <p className="uppercase font-bold text-[1.3rem] text-white">
               Services
             </p>
             <p className="text-white">Add services you provide</p>
           </div>
           <div
-            className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer"
+            className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-5 lg:px-10 py-2 rounded-3xl cursor-pointer"
             onClick={onemodal}
           >
             <p className="w-3 h-3 text-[#D7FD44]">+</p>

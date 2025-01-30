@@ -5,7 +5,7 @@ import AboutMain from "../../components/AdminPanel/AdminPanel/AdminAbout/AboutMa
 
 export default function AboutMe() {
   return (
-    <div className="px-[5rem]">
+    <div className="px-[2rem]">
       <AboutMain />
     </div>
   );

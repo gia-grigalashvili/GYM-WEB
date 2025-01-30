@@ -65,7 +65,6 @@ export default function AboutHeader() {
 
         if (error) throw error;
 
-        // ლოკალური preview-ის წაშლა
         setImagePreview(null);
 
         toast.success("Profile picture removed successfully!");

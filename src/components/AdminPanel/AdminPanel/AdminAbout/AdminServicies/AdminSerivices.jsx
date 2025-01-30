@@ -6,14 +6,22 @@ import { useDeleteServices } from "../../../../../hooks/useDeleteServices";
 import ARROW from "/public/imgs/arrowbig.png";
 import DataAbout from "./DataAbout";
 import Servicesaddd from "./Servicesaddd";
+import ServiciesEdit from "./ServiciesEdit";
 export default function AdminSerivices() {
   const { data, error, isLoading } = usePrice();
   const [openModal, setOpenModal] = useState(false);
-
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
+  const closeModal = () => {
+    setModalOpen(false); // Close the modal
+  };
+  const handleOpenEditModal = (id) => {
+    setOpenEditModal(!openEditModal);
+  };
   const onemodal = () => {
     setOpenModal(!openModal);
   };
-  console.log(onemodal);
+
   const [arrowClick, setArrowClick] = useState([]);
   const handleToggle = (index) => {
     setArrowClick((prev) =>
@@ -65,12 +73,19 @@ export default function AdminSerivices() {
                 arrowClick={arrowClick}
                 name={item.name}
                 id={item.id}
+                handleOpenEditModal={handleOpenEditModal}
+                openEditModal={openEditModal}
               />
             ))}
       </div>
       {openModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <Servicesaddd onemodal={onemodal} />
+        </div>
+      )}
+      {openEditModal && (
+        <div className=" fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <ServiciesEdit closeModal={closeModal} modalOpen={modalOpen} />
         </div>
       )}
     </div>

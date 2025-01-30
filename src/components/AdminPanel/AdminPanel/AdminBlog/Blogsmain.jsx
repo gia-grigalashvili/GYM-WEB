@@ -8,7 +8,6 @@ import { useDeleteBlogs } from "../../../../hooks/useDeleteBlogs";
 import Blogadd from "./Blogadd";
 import FetchBlogs from "./FetchBlogs";
 export default function Blogsmain() {
-  const [arrowClick, setArrowClick] = useState([]);
   const [showe, setshow] = useState(true);
 
   const SetCancel = () => {
@@ -20,12 +19,13 @@ export default function Blogsmain() {
 
   const { mutate: deleteBlog } = useDeleteBlogs();
   const { data: fetchBlogs, isLoading, error } = useFetchBlogs();
-
+  const [arrowClick, setArrowClick] = useState([]);
   const handleToggle = (index) => {
     setArrowClick((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
+
   const handleOpenAddModal = () => {
     setOpenBlogAddModal(true);
   };
@@ -73,6 +73,7 @@ export default function Blogsmain() {
                 arrow={arrow}
                 handleToggle={handleToggle}
                 handleDelete={handleDelete}
+                handleOpenEditModal={handleOpenEditModal}
               />
             ))}
 

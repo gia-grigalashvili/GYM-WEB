@@ -11,16 +11,17 @@ export default function DataAbout({
   sessions_ten,
   sessions_five,
   arrowClick,
+  handleOpenEditModal,
   name,
   id,
 }) {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  const handleOpenEditModal = (id) => {
-    setSelectedId(id);
-    setOpenEditModal(true);
-  };
+  // const handleOpenEditModal = (id) => {
+  //   setSelectedId(id);
+  //   setOpenEditModal(true);
+  // };
 
   return (
     <div>
@@ -94,16 +95,6 @@ export default function DataAbout({
           )}
         </div>
       </div>
-      {openModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <h1>gia</h1>
-        </div>
-      )}
-      {openModal && selectedId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <h1>he</h1>
-        </div>
-      )}
     </div>
   );
 }

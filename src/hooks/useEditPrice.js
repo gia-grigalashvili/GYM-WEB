@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { editPrices } from "../services/GymApi";
+import { editPrices } from "../services/editPrices";
 
 const useEditPrices = () => {
   const queryClient = useQueryClient();

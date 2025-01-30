@@ -12,6 +12,7 @@ export default function FetchBlogs({
   arrow,
   handleDelete,
   handleToggle,
+  handleOpenEditModal = { handleOpenEditModal },
 }) {
   return (
     <div

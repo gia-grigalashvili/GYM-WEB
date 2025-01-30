@@ -5,8 +5,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import cross from "/public/imgs/CROSS.png";
 export default function Blogadd({ SetCancel }) {
+  const [modalOpen, setModalOpen] = useState(true);
   const { addBlogs } = useAddBlogs();
-
+  const closeModal = () => {
+    setModalOpen(false); // Close the modal
+  };
   const submitBlogAdd = (e) => {
     e.preventDefault();
 
@@ -41,7 +44,7 @@ export default function Blogadd({ SetCancel }) {
               <p className="text-white">Add Blogs you provide</p>
             </div>
             <div
-              onClick={SetCancel}
+              onClick={closeModal}
               className="bg-[#D7FD44] flex py-4 px-4 items-center justify-center rounded-full cursor-pointer"
             >
               <img src={cross} alt="Close" />

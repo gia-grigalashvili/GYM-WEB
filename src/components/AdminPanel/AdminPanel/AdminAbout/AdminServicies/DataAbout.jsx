@@ -18,10 +18,6 @@ export default function DataAbout({
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  // const handleOpenEditModal = (id) => {
-  //   setSelectedId(id);
-  //   setOpenEditModal(true);
-  // };
 
   return (
     <div>

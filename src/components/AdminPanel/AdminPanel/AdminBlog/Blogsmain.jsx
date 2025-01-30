@@ -7,6 +7,7 @@ import pen from "/public/imgs/pen.png";
 import { useDeleteBlogs } from "../../../../hooks/useDeleteBlogs";
 import Blogadd from "./Blogadd";
 import FetchBlogs from "./FetchBlogs";
+import BlogEdit from "./BlogEdit";
 export default function Blogsmain() {
   const [showe, setshow] = useState(true);
 
@@ -16,22 +17,24 @@ export default function Blogsmain() {
   const [blogId, setBlogId] = useState(null);
   const [openBlogEditModal, setOpenBlogEditModal] = useState(false);
   const [openBlogAddModal, setOpenBlogAddModal] = useState(false);
-
+  const [cancel, setCancel] = useState(false);
   const { mutate: deleteBlog } = useDeleteBlogs();
   const { data: fetchBlogs, isLoading, error } = useFetchBlogs();
   const [arrowClick, setArrowClick] = useState([]);
+
   const handleToggle = (index) => {
     setArrowClick((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
-
   const handleOpenAddModal = () => {
     setOpenBlogAddModal(true);
+    openBlogEditModal(true);
   };
   const handleOpenEditModal = (id) => {
     setBlogId(id);
     setOpenBlogEditModal(true);
+    openBlogEditModal(true);
   };
   const handleDelete = (id) => {
     deleteBlog(id);
@@ -80,6 +83,11 @@ export default function Blogsmain() {
         {openBlogAddModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <Blogadd SetCancel={SetCancel} />
+          </div>
+        )}
+        {openBlogEditModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <BlogEdit cancel={cancel} setCancel={setCancel} blogId={blogId} />
           </div>
         )}
       </div>

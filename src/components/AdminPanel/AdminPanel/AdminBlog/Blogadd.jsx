@@ -34,7 +34,7 @@ export default function Blogadd({ SetCancel }) {
   };
   return (
     <div>
-      <div className="p-[2.56rem] bg-[#323232] flex items-center justify-center w-[55rem] rounded-[1.25rem]">
+      <div className="p-[1.56rem] lg:px-[2.56rem] bg-[#323232] flex items-center justify-center w-[20rem] lg:w-[55rem] rounded-[1.25rem]">
         <div className="px-[1.375rem] bg-black rounded-lg w-full py-[2.56rem]">
           <div className="flex w-full items-center justify-between pb-[2.56rem]">
             <div className="flex flex-col gap-4">
@@ -56,7 +56,7 @@ export default function Blogadd({ SetCancel }) {
                 <div className="w-2 h-2 bg-white rounded-full"></div>
                 <h2 className="text-white">Input Blogs Title</h2>
               </div>
-              <div className="flex flex-col ml-[1.44rem]">
+              <div className="flex flex-col ">
                 <input
                   type="text"
                   className="w-full bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"
@@ -68,7 +68,7 @@ export default function Blogadd({ SetCancel }) {
                 <div className="w-2 h-2 bg-white rounded-full"></div>
                 <h2 className="text-white">Input Name</h2>
               </div>
-              <div className="flex flex-col ml-[1.44rem]">
+              <div className="flex flex-col ">
                 <input
                   type="text"
                   className="w-full bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"
@@ -80,7 +80,7 @@ export default function Blogadd({ SetCancel }) {
                 <div className="w-2 h-2 bg-white rounded-full"></div>
                 <h2 className="text-white">Input Description</h2>
               </div>
-              <div className="flex flex-col ml-[1.44rem]">
+              <div className="flex flex-col ">
                 <input
                   type="text"
                   className="w-full bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"

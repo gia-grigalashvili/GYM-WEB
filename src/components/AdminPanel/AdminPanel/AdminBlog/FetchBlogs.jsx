@@ -19,10 +19,10 @@ export default function FetchBlogs({
       key={index}
       className={`w-full mt-7 bg-[#222] ${
         arrowClick.includes(index) ? "rounded-xl" : "rounded-[8.75rem]"
-      } px-8 py-6 flex flex-col cursor-pointer transition-all duration-500`}
+      } px-4 lg:px-10 py-6 flex flex-col cursor-pointer transition-all duration-500`}
     >
       <div className="flex items-center justify-between">
-        <p className="text-[1.25rem] font-bold text-[#C4C4C4] uppercase">
+        <p className="lg:text-[1.25rem] text-[1rem] font-bold text-[#C4C4C4] uppercase">
           {title}
         </p>
         <div className="flex items-center justify-center gap-5">

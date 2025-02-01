@@ -4,11 +4,10 @@ import useAddBlogs from "../../../../hooks/useAddBlogs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import cross from "/public/imgs/CROSS.png";
-export default function Blogadd({ SetCancel }) {
-  const [modalOpen, setModalOpen] = useState(true);
+export default function Blogadd({ handleClosemModal }) {
   const { addBlogs } = useAddBlogs();
   const closeModal = () => {
-    setModalOpen(false); // Close the modal
+    handleClosemModal();
   };
   const submitBlogAdd = (e) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ export default function Blogadd({ SetCancel }) {
 
     try {
       addBlogs(formValues);
-      setCancel((prev) => !prev);
+      handleClosemModal();
     } catch (error) {
       console.error("Failed to add blog:", error);
     }

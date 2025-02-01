@@ -17,13 +17,6 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
   const { mutate: editService } = useEditPrices();
   const [formErrors, setFormErrors] = useState({});
 
-  if (priceLoading) {
-    return <p>Loading...</p>;
-  }
-  if (isError) {
-    return <p>{priceError.message}</p>;
-  }
-
   function formAction(e) {
     e.preventDefault();
 
@@ -59,7 +52,14 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
       toast.error("An error occurred while updating services");
     }
   }
-  const { name, sessions_single, sessions_five, sessions_ten } = data?.about[0];
+  const { name, sessions_single, sessions_five, sessions_ten } =
+    data?.about[0] || null;
+  if (priceLoading) {
+    return <p>Loading...</p>;
+  }
+  if (isError) {
+    return <p>{priceError.message}</p>;
+  }
   return (
     <>
       {modalOpen && (

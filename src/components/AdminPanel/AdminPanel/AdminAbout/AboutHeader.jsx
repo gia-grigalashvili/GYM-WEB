@@ -98,9 +98,9 @@ export default function AboutHeader() {
           />
 
           <div className="flex gap-4">
-            <label className="border-[1px] border-[#D7FD44] bg-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[12.1875rem] text-black">
-              <p className="w-3 h-3">+</p>
-              <p>Upload New</p>
+            <label className="border-[1px] border-[#D7FD44] bg-[#D7FD44] flex gap-[0.62rem] px-5 py-2 rounded-3xl cursor-pointer max-w-[12.1875rem] text-black">
+              <p>+</p>
+              <h1 className="text-[11px] lg:text-[17px]">Upload New</h1>
               <input
                 type="file"
                 accept="image/*"
@@ -116,9 +116,9 @@ export default function AboutHeader() {
             )}
             <div
               onClick={handleRemoveImage}
-              className="border-[1px] border-[#D7FD44] flex px-10  gap-[5px]   rounded-3xl  p-[10px] text-center cursor-pointer  text-black"
+              className="border-[1px] border-[#D7FD44] flex px-5  gap-[5px]   rounded-3xl  p-[10px]  cursor-pointer  text-black"
             >
-              <h1 className="text-[#D7FD44] font-bold ">
+              <h1 className="text-[#D7FD44] text-[10px] lg:text-[17px] font-bold ">
                 Remove Profile Picture
               </h1>
             </div>

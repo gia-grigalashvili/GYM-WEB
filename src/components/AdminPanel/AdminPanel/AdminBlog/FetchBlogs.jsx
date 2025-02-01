@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function FetchBlogs({
-  index,
   title,
   id,
   description,
@@ -16,9 +15,9 @@ export default function FetchBlogs({
 }) {
   return (
     <div
-      key={index}
+      key={id}
       className={`w-full mt-7 bg-[#222] ${
-        arrowClick.includes(index) ? "rounded-xl" : "rounded-[8.75rem]"
+        arrowClick.includes(id) ? "rounded-xl" : "rounded-[8.75rem]"
       } px-4 lg:px-10 py-6 flex flex-col cursor-pointer transition-all duration-500`}
     >
       <div className="flex items-center justify-between">
@@ -27,14 +26,14 @@ export default function FetchBlogs({
         </p>
         <div className="flex items-center justify-center gap-5">
           <div
-            onClick={() => handleToggle(index)}
+            onClick={() => handleToggle(id)}
             className="bg-[#D7FD44] rounded-full w-[3.375rem] h-[3.375rem] flex items-center justify-center"
           >
             <img
               src={arrow}
               alt="Expand section"
               className={`transition-transform duration-300 w-[1.58206rem] h-[1.58206rem] ${
-                arrowClick.includes(index) ? "-rotate-[90deg]" : "rotate-0"
+                arrowClick.includes(id) ? "-rotate-[90deg]" : "rotate-0"
               }`}
             />
           </div>
@@ -47,12 +46,12 @@ export default function FetchBlogs({
       </div>
       <div
         className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
-          arrowClick.includes(index)
+          arrowClick.includes(id)
             ? "max-h-[500px] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >
-        {arrowClick.includes(index) && (
+        {arrowClick.includes(id) && (
           <div className="flex flex-col md:flex-row lg:flex-row md:justify-between lg:justify-between mt-4 transition-all duration-500 ease-in-out">
             <div className="flex flex-col gap-3 w-[70%]">
               <p className="text-white text-[1.25rem] font-bold">{author}</p>

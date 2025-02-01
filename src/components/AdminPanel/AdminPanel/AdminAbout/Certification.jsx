@@ -24,10 +24,10 @@ export default function Certification() {
           certification.map((item, index) => (
             <div
               key={index}
-              className="flex text-[#ffff] text-[20px] gap-[10px]"
+              className="flex text-[#ffff] text-[20px] gap-[20px]"
             >
-              <p>{item.name}</p>
-              <p>{item.startDate}</p>
+              <p className="text-[15px] lg:text-[20px]">{item.name}</p>
+              <p className="text-[15px] lg:text-[20px]">{item.startDate}</p>
             </div>
           ))}
 

@@ -9,11 +9,6 @@ import Blogadd from "./Blogadd";
 import FetchBlogs from "./FetchBlogs";
 import BlogEdit from "./BlogEdit";
 export default function Blogsmain() {
-  const [showe, setshow] = useState(true);
-
-  const SetCancel = () => {
-    setshow(false);
-  };
   const [blogId, setBlogId] = useState(null);
   const [openBlogEditModal, setOpenBlogEditModal] = useState(false);
   const [openBlogAddModal, setOpenBlogAddModal] = useState(false);
@@ -21,14 +16,17 @@ export default function Blogsmain() {
   const { mutate: deleteBlog } = useDeleteBlogs();
   const { data: fetchBlogs, isLoading, error } = useFetchBlogs();
   const [arrowClick, setArrowClick] = useState([]);
-
+  const handleClosemModal = () => {
+    setOpenBlogAddModal((prev) => !prev);
+  };
   const handleToggle = (index) => {
     setArrowClick((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
   const handleOpenAddModal = () => {
-    setOpenBlogAddModal(true);
+    setOpenBlogAddModal((prev) => !prev);
+
     openBlogEditModal(true);
   };
   const handleOpenEditModal = (id) => {
@@ -63,9 +61,9 @@ export default function Blogsmain() {
           ? Array.from({ length: 5 }).map((_, index) => (
               <div key={index} className="w-full mt-7"></div>
             ))
-          : fetchBlogs?.blogs.map((item, index) => (
+          : fetchBlogs?.blogs.map((item) => (
               <FetchBlogs
-                key={index}
+                key={item.id}
                 description={item.description}
                 title={item.title}
                 id={item.id}
@@ -82,7 +80,7 @@ export default function Blogsmain() {
 
         {openBlogAddModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <Blogadd SetCancel={SetCancel} />
+            <Blogadd handleClosemModal={handleClosemModal} />
           </div>
         )}
         {openBlogEditModal && (

@@ -4,12 +4,11 @@ import { useCertification } from "../../../../hooks/useCertification ";
 export default function Certification() {
   const { data: certifications } = useCertification();
   const certification = certifications?.data;
-  const [certificateText, setCertificateText] = useState(false);
+  const [OpenCertificateModal, setOpenCertificateModal] = useState(false);
 
-  const handleOpenCertificateModal = () => {
-    setCertificateText(true);
+  const handleCloseCertificateModal = (id) => {
+    setOpenCertificateModal(true);
   };
-
   const handleCloseModal = () => {
     setCertificateText(false);
   };
@@ -30,13 +29,22 @@ export default function Certification() {
               <p className="text-[15px] lg:text-[20px]">{item.startDate}</p>
             </div>
           ))}
-
-        <div
-          className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
-          onClick={handleOpenCertificateModal}
-        >
-          <p className="w-3 h-3 text-[#D7FD44]">+</p>
-          <p className="text-[#D7FD44]">Add Experience</p>
+        <div className="flex justify-center items-center py-4 gap-4">
+          <div
+            className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
+            onClick={() => handleCloseCertificateModal(null)}
+          >
+            <p className="w-3 h-3 text-[#D7FD44]">+</p>
+            <p className="text-[#D7FD44]">Add Experience</p>
+          </div>
+          {OpenCertificateModal && (
+            <div
+              className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
+              onClick={() => handleCloseCertificateModal(null)}
+            >
+              <p className="text-[#D7FD44]">Cancel</p>
+            </div>
+          )}
         </div>
       </div>
 

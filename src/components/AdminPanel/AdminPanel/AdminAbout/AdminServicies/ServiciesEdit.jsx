@@ -111,7 +111,7 @@ export default function ServiciesEdit({ handleCloseEdit, saveId }) {
                     </div>
                   </div>
 
-                  <div className="flex gap-4 pl-5">
+                  <div className="flex gap-4 flex-col lg:flex-row pl-5">
                     <div className="flex flex-col mt-3 gap-2">
                       <label className="text-white">Single Session Price</label>
                       <input

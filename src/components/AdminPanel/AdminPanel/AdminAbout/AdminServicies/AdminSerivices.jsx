@@ -11,12 +11,17 @@ export default function AdminSerivices() {
   const { data, error, isLoading } = usePrice();
   const [openModal, setOpenModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [saveId, setSaveId] = useState();
   const [modalOpen, setModalOpen] = useState(true);
-  const closeModal = () => {
-    setModalOpen(false); // Close the modal
+  const [openBlogEditModal, setOpenBlogEditModal] = useState(false);
+
+  const handleCloseEdit = () => {
+    setOpenBlogEditModal((prev) => !prev);
   };
+
   const handleOpenEditModal = (id) => {
-    setOpenEditModal(!openEditModal);
+    setSaveId(id);
+    setOpenBlogEditModal((prev) => !prev);
   };
   const onemodal = () => {
     setOpenModal(!openModal);
@@ -62,7 +67,6 @@ export default function AdminSerivices() {
               <DataAbout
                 key={index}
                 ARROW={ARROW}
-                AdminSerivices={AdminSerivices}
                 CROSS={CROSS}
                 sessions_single={item.sessions_single}
                 handleDelete={handleDelete}
@@ -74,7 +78,6 @@ export default function AdminSerivices() {
                 name={item.name}
                 id={item.id}
                 handleOpenEditModal={handleOpenEditModal}
-                openEditModal={openEditModal}
               />
             ))}
       </div>
@@ -83,9 +86,9 @@ export default function AdminSerivices() {
           <Servicesaddd onemodal={onemodal} />
         </div>
       )}
-      {openEditModal && (
-        <div className=" fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <ServiciesEdit closeModal={closeModal} modalOpen={modalOpen} />
+      {openBlogEditModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <ServiciesEdit saveId={saveId} handleCloseEdit={handleCloseEdit} />
         </div>
       )}
     </div>

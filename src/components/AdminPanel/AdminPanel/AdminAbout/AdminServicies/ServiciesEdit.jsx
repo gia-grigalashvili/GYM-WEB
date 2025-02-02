@@ -6,17 +6,19 @@ import croos from "/public/imgs/CROSS.png";
 
 import "react-toastify/dist/ReactToastify.css";
 
-export default function ServiciesEdit({ closeModal, modalOpen }) {
+export default function ServiciesEdit({ handleCloseEdit, saveId }) {
   const {
     data,
     isLoading: priceLoading,
     isError,
     error: priceError,
-  } = usePriceId();
+  } = usePriceId(saveId);
   console.log(data);
   const { mutate: editService } = useEditPrices();
   const [formErrors, setFormErrors] = useState({});
-
+  const closemodal = () => {
+    handleCloseEdit();
+  };
   function formAction(e) {
     e.preventDefault();
 
@@ -36,6 +38,7 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
       setFormErrors(errors);
       return;
     }
+    const selectedId = data.about[0].id;
 
     const updatedData = {
       name: formValues.title,
@@ -46,14 +49,14 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
 
     try {
       editService({ id: selectedId, updatedData });
-      closeModal();
+      handleCloseEdit();
+
       toast.success("Services updated successfully!");
     } catch (error) {
       toast.error("An error occurred while updating services");
     }
   }
-  const { name, sessions_single, sessions_five, sessions_ten } =
-    data?.about[0] || null;
+
   if (priceLoading) {
     return <p>Loading...</p>;
   }
@@ -62,25 +65,25 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
   }
   return (
     <>
-      {modalOpen && (
-        <>
-          <div className="p-[2.56rem] bg-[#323232] flex items-center justify-center w-[55rem] rounded-[1.25rem]">
-            <div className="px-[1.375rem] bg-black rounded-lg w-full py-[2.56rem]">
-              <div className="flex w-full items-center justify-between pb-[2.56rem]">
-                <div className="flex flex-col gap-4">
-                  <p className="uppercase font-bold text-[1.5rem] text-white">
-                    Edit Services
-                  </p>
-                  <p className="text-white">Edit services you provide</p>
-                </div>
-                <div
-                  onClick={() => closeModal()}
-                  className="bg-[#D7FD44] flex py-4 px-4 items-center justify-center rounded-full cursor-pointer"
-                >
-                  <img src={croos} alt="Close" />
-                </div>
+      <>
+        <div className="p-[1.56rem] bg-[#323232] flex  items-center justify-center w-[21rem] lg:w-[55rem] h-auto rounded-[1.25rem]">
+          <div className="px-[1.375rem] bg-black rounded-lg w-full py-[2.56rem]">
+            <div className="flex w-full items-center justify-between pb-[2.56rem]">
+              <div className="flex flex-col gap-4">
+                <p className="uppercase font-bold text-[1.5rem] text-white">
+                  Edit Services
+                </p>
+                <p className="text-white">Edit services you provide</p>
               </div>
-              <form onSubmit={formAction}>
+              <div
+                onClick={closemodal}
+                className="bg-[#D7FD44] flex py-4 px-4 items-center justify-center rounded-full cursor-pointer"
+              >
+                <img src={croos} alt="Close" />
+              </div>
+            </div>
+            {data?.about.map((service) => (
+              <form key={service.id} onSubmit={formAction}>
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -92,7 +95,7 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
                       className="w-full bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"
                       placeholder="Weight Loss"
                       name="title"
-                      defaultValue={name}
+                      defaultValue={service.name}
                     />
                     {formErrors.title && (
                       <p className="text-red-500 text-sm">{formErrors.title}</p>
@@ -116,7 +119,7 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
                         className="bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"
                         placeholder="10$"
                         name="singleSession"
-                        defaultValue={sessions_single}
+                        defaultValue={service.sessions_single}
                       />
                       {formErrors.singleSession && (
                         <p className="text-red-500 text-sm">
@@ -134,7 +137,7 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
                         className="bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"
                         placeholder="50$"
                         name="fiveSession"
-                        defaultValue={sessions_five}
+                        defaultValue={service.sessions_five}
                       />
                       {formErrors.fiveSession && (
                         <p className="text-red-500 text-sm">
@@ -152,7 +155,7 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
                         className="bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"
                         placeholder="100$"
                         name="tenSession"
-                        defaultValue={sessions_ten}
+                        defaultValue={service.sessions_ten}
                       />
                       {formErrors.tenSession && (
                         <p className="text-red-500 text-sm">
@@ -163,7 +166,7 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
                   </div>
                 </div>
                 <div className="flex w-full justify-center items-center">
-                  <button className="flex items-center justify-center mt-[3.81rem] ">
+                  <button className="flex items-center justify-center mt-[3.81rem]">
                     <div className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer">
                       <p className="w-3 h-3 text-[#D7FD44]">+</p>
                       <p className="text-[#D7FD44]">Edit Service</p>
@@ -171,10 +174,10 @@ export default function ServiciesEdit({ closeModal, modalOpen }) {
                   </button>
                 </div>
               </form>
-            </div>
+            ))}
           </div>
-        </>
-      )}
+        </div>
+      </>
     </>
   );
 }

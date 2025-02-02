@@ -11,14 +11,11 @@ export default function DataAbout({
   sessions_ten,
   sessions_five,
   arrowClick,
-  handleOpenEditModal,
+
   name,
   id,
+  handleOpenEditModal,
 }) {
-  const [openEditModal, setOpenEditModal] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
-
   return (
     <div>
       <div

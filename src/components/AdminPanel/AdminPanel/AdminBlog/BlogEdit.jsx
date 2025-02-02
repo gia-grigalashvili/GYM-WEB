@@ -3,10 +3,12 @@ import { useFetchBlogs } from "../../../../hooks/UseFetchBlogs";
 import { toast } from "react-toastify";
 import croos from "/public/imgs/CROSS.png";
 import "react-toastify/dist/ReactToastify.css";
-export default function BlogEdit({ cancel, setCancel, blogId }) {
+export default function BlogEdit({ setCancel, handleCloseEdit, blogId }) {
   const { data, isLoading, isError, error } = useFetchBlogs();
   const { mutate: editBlogs } = useEditBlogs();
-
+  const closemodal = () => {
+    handleCloseEdit();
+  };
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -39,6 +41,7 @@ export default function BlogEdit({ cancel, setCancel, blogId }) {
     const description = formData.get("description");
     try {
       setCancel((prev) => !prev);
+
       editBlogs({ id: blogToEdit.id, author, title, description });
       toast.success("Blog updated successfully!");
     } catch (error) {
@@ -59,7 +62,7 @@ export default function BlogEdit({ cancel, setCancel, blogId }) {
                 <p className="text-white">Edit Blogs you provide</p>
               </div>
               <div
-                onClick={() => setCancel(false)}
+                onClick={closemodal}
                 className="bg-[#D7FD44] flex py-4 px-4 items-center justify-center rounded-full cursor-pointer"
               >
                 <img src={croos} alt="Close" />

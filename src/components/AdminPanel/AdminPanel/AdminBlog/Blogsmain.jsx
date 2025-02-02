@@ -16,23 +16,25 @@ export default function Blogsmain() {
   const { mutate: deleteBlog } = useDeleteBlogs();
   const { data: fetchBlogs, isLoading, error } = useFetchBlogs();
   const [arrowClick, setArrowClick] = useState([]);
+  //xuravs add-is modals
   const handleClosemModal = () => {
     setOpenBlogAddModal((prev) => !prev);
+  };
+  const handleCloseEdit = () => {
+    setOpenBlogEditModal((prev) => !prev);
   };
   const handleToggle = (index) => {
     setArrowClick((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
+  //xsnis
   const handleOpenAddModal = () => {
     setOpenBlogAddModal((prev) => !prev);
-
-    openBlogEditModal(true);
   };
   const handleOpenEditModal = (id) => {
     setBlogId(id);
-    setOpenBlogEditModal(true);
-    openBlogEditModal(true);
+    setOpenBlogEditModal((prev) => !prev);
   };
   const handleDelete = (id) => {
     deleteBlog(id);
@@ -85,7 +87,11 @@ export default function Blogsmain() {
         )}
         {openBlogEditModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <BlogEdit cancel={cancel} setCancel={setCancel} blogId={blogId} />
+            <BlogEdit
+              blogId={blogId}
+              handleCloseEdit={handleCloseEdit}
+              setCancel={setCancel}
+            />
           </div>
         )}
       </div>

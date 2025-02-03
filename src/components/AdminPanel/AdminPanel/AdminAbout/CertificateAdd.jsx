@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function CertificateAdd() {
+export default function CertificateAdd({
+  certificateText,
+  setCertificateText,
+  certificateStart,
+  setCertificateStart,
+  certificateEnd,
+  setCertificateEnd,
+}) {
   const [error, setError] = useState("");
 
   const isValidDate = (date) => !isNaN(new Date(date).getTime());
+
   const handleStartDateChange = (e) => {
     const startDate = e.target.value;
-
     if (isValidDate(startDate) && isValidDate(certificateEnd)) {
       if (new Date(startDate) > new Date(certificateEnd)) {
         setError("Start date cannot be later than the end date.");
@@ -28,6 +35,7 @@ export default function CertificateAdd() {
     setError("");
     setCertificateEnd(endDate);
   };
+
   return (
     <div>
       <input

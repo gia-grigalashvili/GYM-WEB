@@ -1,10 +1,64 @@
 import React, { useState } from "react";
-import { useCertification } from "../../../../hooks/useCertification ";
+import { useFetchAbout } from "../../../../hooks/useFetchAbout.js";
+import useAddCertification from "../../../../hooks/useAddCertification.js";
+import { useCertification } from "../../../../hooks/useCertification .js";
+import CertificateAdd from "./CertificateAdd";
 
 export default function Certification() {
+  const { data, isLoading, error, isError } = useFetchAbout();
   const { data: certifications } = useCertification();
+  // const { mutate: deleteCertification } = useDeleteCertification();
+  // const { addCertificateInfo } = useAddCertification();
+
+  const [certificateText, setCertificateText] = useState("");
+  const [certificateStart, setCertificateStart] = useState("");
+  const [certificateEnd, setCertificateEnd] = useState("");
+
   const certification = certifications?.data;
+  const { addCertificateInfo } = useAddCertification();
+  const handleOpenCertificateModal = (id) => {
+    setOpenCertificateModal(true);
+  };
   const [OpenCertificateModal, setOpenCertificateModal] = useState(false);
+  function aboutFormAction(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const formAction = Object.fromEntries(formData);
+
+    const updatedAbout = {
+      story: formAction.story,
+      experience: formAction.experience,
+    };
+
+    editAbout.mutate(
+      { id: data.about[0].id, updatedAbout },
+      {
+        onSuccess: () => {
+          console.log("About info updated successfully!");
+        },
+        onError: (error) => {
+          console.error("Failed to update about info:", error.message);
+        },
+      }
+    );
+    if (selectedCertificateId) {
+    }
+
+    if (certificateText.trim() != "") {
+      try {
+        addCertificateInfo({
+          name: certificateText,
+          startDate: certificateStart,
+          endDate: certificateEnd,
+        });
+        setCertificateText("");
+        setOpenCertificateModal(false);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
 
   const handleCloseCertificateModal = (id) => {
     setOpenCertificateModal(true);
@@ -17,69 +71,50 @@ export default function Certification() {
 
   return (
     <div>
-      <h1 className="text-[20px] text-[#ffff]">Certifications</h1>
-      <div className="rounded-[20px] flex flex-col gap-[20px] mt-[20px] bg-[#323232] p-[20px] ">
-        {certification?.length > 0 &&
-          certification.map((item, index) => (
-            <div
-              key={index}
-              className="flex text-[#ffff] text-[20px] gap-[20px]"
-            >
-              <p className="text-[15px] lg:text-[20px]">{item.name}</p>
-              <p className="text-[15px] lg:text-[20px]">{item.startDate}</p>
-            </div>
-          ))}
-        <div className="flex justify-center items-center py-4 gap-4">
-          <div
-            className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
-            onClick={() => handleCloseCertificateModal(null)}
-          >
-            <p className="w-3 h-3 text-[#D7FD44]">+</p>
-            <p className="text-[#D7FD44]">Add Experience</p>
-          </div>
+      <form onSubmit={aboutFormAction}>
+        <h1 className="text-[20px] text-[#ffff]">Certifications</h1>
+        <div className="rounded-[20px] flex flex-col gap-[20px] mt-[20px] bg-[#323232] p-[20px] ">
+          {certification?.length > 0 &&
+            certification.map((item, index) => (
+              <div
+                key={index}
+                className="flex text-[#ffff] text-[20px] gap-[20px]"
+              >
+                <p className="text-[15px] lg:text-[20px]">{item.name}</p>
+                <p className="text-[15px] lg:text-[20px]">{item.startDate}</p>
+              </div>
+            ))}
           {OpenCertificateModal && (
+            <CertificateAdd
+              certificateText={certificateText}
+              setCertificateText={setCertificateText}
+              certificateStart={certificateStart}
+              setCertificateStart={setCertificateStart}
+              certificateEnd={certificateEnd}
+              setCertificateEnd={setCertificateEnd}
+            />
+          )}
+
+          <div className="flex justify-center items-center py-4 gap-4">
             <div
               className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
-              onClick={() => handleCloseCertificateModal(null)}
+              onClick={() => handleOpenCertificateModal(null)}
             >
-              <p className="text-[#D7FD44]">Cancel</p>
+              <p className="w-3 h-3 text-[#D7FD44]">+</p>
+              <p className="text-[#D7FD44]">Add Experience</p>
             </div>
-          )}
-        </div>
-      </div>
 
-      {/* Modal */}
-      {certificateText && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-[#444] p-6 rounded-md w-[400px] text-[#fff] relative">
-            <h2 className="text-[18px] mb-4">Add Certification</h2>
-            <input
-              type="text"
-              placeholder="Certification Name"
-              className="w-full mb-4 p-2 rounded-md bg-[#555] text-[#fff]"
-            />
-            <input
-              type="text"
-              placeholder="Start Date"
-              className="w-full mb-4 p-2 rounded-md bg-[#555] text-[#fff]"
-            />
-            <div className="flex justify-end gap-4">
-              <button
-                className="bg-[#D7FD44] px-4 py-2 rounded-md text-black"
-                onClick={handleCloseModal}
+            {OpenCertificateModal && (
+              <div
+                className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
+                onClick={() => handleCloseCertificateModal(null)}
               >
-                Save
-              </button>
-              <button
-                className="bg-[#555] px-4 py-2 rounded-md text-[#fff]"
-                onClick={handleCloseModal}
-              >
-                Cancel
-              </button>
-            </div>
+                <p className="text-[#D7FD44]">gg</p>
+              </div>
+            )}
           </div>
         </div>
-      )}
+      </form>
     </div>
   );
 }

@@ -3,49 +3,38 @@ import { useFetchAbout } from "../../../../hooks/useFetchAbout.js";
 import useAddCertification from "../../../../hooks/useAddCertification.js";
 import { useCertification } from "../../../../hooks/useCertification .js";
 import CertificateAdd from "./CertificateAdd";
+import Sharestory from "./Sharestory.jsx";
 
 export default function Certification() {
   const { data, isLoading, error, isError } = useFetchAbout();
   const { data: certifications } = useCertification();
-  // const { mutate: deleteCertification } = useDeleteCertification();
-  // const { addCertificateInfo } = useAddCertification();
+  const { addCertificateInfo } = useAddCertification();
 
+  const [OpenCertificateModal, setOpenCertificateModal] = useState(false);
   const [certificateText, setCertificateText] = useState("");
   const [certificateStart, setCertificateStart] = useState("");
   const [certificateEnd, setCertificateEnd] = useState("");
 
   const certification = certifications?.data;
-  const { addCertificateInfo } = useAddCertification();
-  const handleOpenCertificateModal = (id) => {
+
+  const handleOpenCertificateModal = () => {
     setOpenCertificateModal(true);
   };
-  const [OpenCertificateModal, setOpenCertificateModal] = useState(false);
-  function aboutFormAction(e) {
-    e.preventDefault();
 
+  const handleCloseCertificateModal = () => {
+    setOpenCertificateModal(false);
+  };
+
+  const aboutFormAction = (e) => {
+    e.preventDefault();
     const formData = new FormData(e.target);
     const formAction = Object.fromEntries(formData);
-
     const updatedAbout = {
       story: formAction.story,
       experience: formAction.experience,
     };
 
-    editAbout.mutate(
-      { id: data.about[0].id, updatedAbout },
-      {
-        onSuccess: () => {
-          console.log("About info updated successfully!");
-        },
-        onError: (error) => {
-          console.error("Failed to update about info:", error.message);
-        },
-      }
-    );
-    if (selectedCertificateId) {
-    }
-
-    if (certificateText.trim() != "") {
+    if (certificateText.trim() !== "") {
       try {
         addCertificateInfo({
           name: certificateText,
@@ -58,32 +47,31 @@ export default function Certification() {
         console.error(error);
       }
     }
-  }
-
-  const handleCloseCertificateModal = (id) => {
-    setOpenCertificateModal(true);
   };
-  const handleCloseModal = () => {
-    setCertificateText(false);
-  };
-
-  console.log(certifications);
 
   return (
     <div>
       <form onSubmit={aboutFormAction}>
-        <h1 className="text-[20px] text-[#ffff]">Certifications</h1>
-        <div className="rounded-[20px] flex flex-col gap-[20px] mt-[20px] bg-[#323232] p-[20px] ">
-          {certification?.length > 0 &&
-            certification.map((item, index) => (
-              <div
-                key={index}
-                className="flex text-[#ffff] text-[20px] gap-[20px]"
-              >
-                <p className="text-[15px] lg:text-[20px]">{item.name}</p>
-                <p className="text-[15px] lg:text-[20px]">{item.startDate}</p>
-              </div>
-            ))}
+        <Sharestory
+          useFetchAbout={useFetchAbout}
+          aboutFormAction={aboutFormAction}
+        />
+        <div>
+          <h1 className="text-[20px] text-[#ffff]">Certifications</h1>
+          <div className="rounded-[20px] flex flex-col gap-[20px] mt-[20px] bg-[#323232] p-[20px] ">
+            {certification?.length > 0 &&
+              certification.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex text-[#ffff] text-[20px] gap-[20px]"
+                >
+                  <p className="text-[15px] lg:text-[20px]">{item.name}</p>
+                  <p className="text-[15px] lg:text-[20px]">{item.startDate}</p>
+                </div>
+              ))}
+          </div>
+        </div>
+        <div>
           {OpenCertificateModal && (
             <CertificateAdd
               certificateText={certificateText}
@@ -98,22 +86,25 @@ export default function Certification() {
           <div className="flex justify-center items-center py-4 gap-4">
             <div
               className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
-              onClick={() => handleOpenCertificateModal(null)}
+              onClick={handleOpenCertificateModal}
             >
               <p className="w-3 h-3 text-[#D7FD44]">+</p>
               <p className="text-[#D7FD44]">Add Experience</p>
             </div>
 
             {OpenCertificateModal && (
-              <div
-                className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
-                onClick={() => handleCloseCertificateModal(null)}
-              >
-                <p className="text-[#D7FD44]">gg</p>
+              <div>
+                <div
+                  className="border-[1px] border-[#D7FD44] flex gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[15.1875rem]"
+                  onClick={handleCloseCertificateModal}
+                >
+                  <p className="text-[#D7FD44]">Cancel</p>
+                </div>
               </div>
             )}
           </div>
         </div>
+        <button className="text-[#fff]"> upload page</button>
       </form>
     </div>
   );

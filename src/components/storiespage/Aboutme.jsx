@@ -54,7 +54,7 @@ export default function Aboutme() {
               alt="Star Icon"
             />
             <span className="absolute text-[1.5rem] lg:text-[2.5rem] font-bold text-black">
-              {/* {yearExp}+ */}
+              {yearExp}
             </span>
           </div>
           <span className="text-white">

@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { useFetchAbout } from "../../../../hooks/useFetchAbout.js";
 import useAddCertification from "../../../../hooks/useAddCertification.js";
 import { useCertification } from "../../../../hooks/useCertification .js";
+import { useDeleteCertification } from "../../../../hooks/useDeleteCertification.js";
 import CertificateAdd from "./CertificateAdd";
 import Sharestory from "./Sharestory.jsx";
-
+import croos from "/public/imgs/CROSS.png";
 export default function Certification() {
   const { data, isLoading, error, isError } = useFetchAbout();
   const { data: certifications } = useCertification();
   const { addCertificateInfo } = useAddCertification();
-
+  const { mutate: deleteCertification } = useDeleteCertification();
   const [OpenCertificateModal, setOpenCertificateModal] = useState(false);
   const [certificateText, setCertificateText] = useState("");
   const [certificateStart, setCertificateStart] = useState("");
@@ -48,7 +49,9 @@ export default function Certification() {
       }
     }
   };
-
+  const handleDelete = (id) => {
+    deleteCertification(id);
+  };
   return (
     <div>
       <form onSubmit={aboutFormAction}>
@@ -56,6 +59,7 @@ export default function Certification() {
           useFetchAbout={useFetchAbout}
           aboutFormAction={aboutFormAction}
         />
+
         <div>
           <h1 className="text-[20px] text-[#ffff]">Certifications</h1>
           <div className="rounded-[20px] flex flex-col gap-[20px] mt-[20px] bg-[#323232] p-[20px] ">
@@ -63,15 +67,26 @@ export default function Certification() {
               certification.map((item, index) => (
                 <div
                   key={index}
-                  className="flex text-[#ffff] text-[20px] gap-[20px]"
+                  className="flex text-[#ffff] text-[20px]  items-center gap-[100px]"
                 >
-                  <p className="text-[15px] lg:text-[20px]">{item.name}</p>
-                  <p className="text-[15px] lg:text-[20px]">{item.startDate}</p>
+                  <div className="flex items-center gap-[20px]">
+                    <p className="text-[15px] lg:text-[20px]">{item.name}</p>
+                    <p className="text-[15px] lg:text-[20px]">
+                      {item.startDate}
+                    </p>
+                  </div>
+
+                  <img
+                    className="cursor-pointer w-3 h-3   "
+                    onClick={() => handleDelete(item.id)}
+                    src={croos}
+                    alt=""
+                  />
                 </div>
               ))}
           </div>
         </div>
-        <div>
+        <div className="mt-[20px]">
           {OpenCertificateModal && (
             <CertificateAdd
               certificateText={certificateText}
@@ -104,7 +119,10 @@ export default function Certification() {
             )}
           </div>
         </div>
-        <button className="text-[#fff]"> upload page</button>
+        <button className="my-[2.44rem] border-[1px] border-[#D7FD44] bg-[#D7FD44] gap-[0.62rem] px-10 py-2 rounded-3xl cursor-pointer max-w-[12.1875rem]">
+          {" "}
+          upload page
+        </button>
       </form>
     </div>
   );

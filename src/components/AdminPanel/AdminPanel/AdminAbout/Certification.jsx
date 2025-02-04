@@ -67,7 +67,7 @@ export default function Certification() {
               certification.map((item, index) => (
                 <div
                   key={index}
-                  className="flex text-[#ffff] text-[20px]  items-center gap-[100px]"
+                  className="flex text-[#ffff] text-[20px]   justify-between items-center gap-[100px]"
                 >
                   <div className="flex items-center gap-[20px]">
                     <p className="text-[15px] lg:text-[20px]">{item.name}</p>
@@ -77,7 +77,7 @@ export default function Certification() {
                   </div>
 
                   <img
-                    className="cursor-pointer w-3 h-3   "
+                    className="cursor-pointer w-4 h-4  "
                     onClick={() => handleDelete(item.id)}
                     src={croos}
                     alt=""

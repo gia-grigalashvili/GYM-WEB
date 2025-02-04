@@ -1,6 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-
+import { Outlet, Navigate } from "react-router-dom";
 import AdminNavigation from "../components/AdminPanel/AdminNavigation/AdminNavigation";
 import AdminHeader from "../components/AdminPanel/Header/AdminHeader";
 import AdminPanel from "../components/AdminPanel/AdminPanel";

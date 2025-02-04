@@ -2,7 +2,6 @@ import { useLocation, Link } from "react-router-dom";
 export default function AdminNavigation() {
   const location = useLocation();
   const navLink = [
-    // {name: "Dashboard", path: "/admin/dashboard"},
     { name: "Stories", path: "/admin/stories" },
     { name: "Servicies", path: "/admin/Servicies" },
     { name: "Blogs", path: "/admin/blogs" },
@@ -24,7 +23,6 @@ export default function AdminNavigation() {
               >
                 <Link
                   to={path}
-                  //   onClick={handleNavClick}
                   className={`font-Nunito text-[1.3rem] font-[700] leading-normal ${
                     isActive ? "text-black" : "text-white"
                   }`}

@@ -5,9 +5,16 @@ import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import { useAddImage } from "../../../../hooks/useAddImage";
 import { supabase } from "../../../../services/FetchSupabaseConfig";
+
 export default function AboutHeader() {
   const [imagePreview, setImagePreview] = useState(null);
-  const { data, isLoading, isError, error: aboutError } = useFetchAbout();
+  const {
+    data,
+    isLoading,
+    isError,
+    error: aboutError,
+    refetch,
+  } = useFetchAbout();
   const { mutate: addImage } = useAddImage();
   const {
     register,
@@ -15,7 +22,10 @@ export default function AboutHeader() {
     reset,
     formState: { errors },
   } = useForm();
+
   const Image = data?.about?.at(-1)?.image;
+  const imageId = data?.about?.at(-1)?.id; // საჭირო იქნება ID ჩანაწერისთვის
+
   const handleImagePreview = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -41,33 +51,42 @@ export default function AboutHeader() {
       });
 
       setImagePreview(imageUrl);
-
       toast.success("Profile updated successfully!");
+
+      refetch(); // მონაცემების განახლება
     } catch (err) {
       console.error("Error updating profile:", err);
       toast.error("Failed to update profile.");
     } finally {
-      reset({
-        image: null,
-      });
+      reset({ image: null });
     }
   };
+
   const handleRemoveImage = async () => {
     try {
       const currentImage = imagePreview || Image;
 
       if (currentImage) {
-        const imagePath = currentImage.split("public/").pop(); // იღებს ზუსტ ბილიკს
+        const imagePath = currentImage.split("public/").pop();
 
-        const { error } = await supabase.storage
+        const { error: storageError } = await supabase.storage
           .from("about")
           .remove([imagePath]);
 
-        if (error) throw error;
+        if (storageError) throw storageError;
+
+        // მონაცემთა ბაზიდან წაშლა
+        const { error: dbError } = await supabase
+          .from("about")
+          .delete()
+          .eq("id", imageId);
+
+        if (dbError) throw dbError;
 
         setImagePreview(null);
-
         toast.success("Profile picture removed successfully!");
+
+        refetch(); // მონაცემების განახლება
       }
     } catch (err) {
       console.error("Error removing profile picture:", err);
@@ -90,7 +109,7 @@ export default function AboutHeader() {
         <p className="text-[1.5rem] font-medium text-white">
           Your Profile Picture
         </p>
-        <div className="flex items-center  gap-6">
+        <div className="flex items-center gap-6">
           <img
             className="rounded-[50%] w-[5rem] h-[5rem]"
             src={imagePreview || Image || ""}
@@ -116,18 +135,18 @@ export default function AboutHeader() {
             )}
             <div
               onClick={handleRemoveImage}
-              className="border-[1px] border-[#D7FD44] flex px-5  gap-[5px]   rounded-3xl  p-[10px]  cursor-pointer  text-black"
+              className="border-[1px] border-[#D7FD44] flex px-5 gap-[5px] rounded-3xl p-[10px] cursor-pointer text-black"
             >
-              <h1 className="text-[#D7FD44] text-[10px] lg:text-[17px] font-bold ">
+              <h1 className="text-[#D7FD44] text-[10px] lg:text-[17px] font-bold">
                 Remove Profile Picture
               </h1>
             </div>
           </div>
         </div>
-        <div className="flex items-center  gap-6">
+        <div className="flex items-center gap-6">
           <button
             type="submit"
-            className="flex px-10 bg-[#D7FD44]  rounded-3xl  p-[10px] text-center"
+            className="flex px-10 bg-[#D7FD44] rounded-3xl p-[10px] text-center"
           >
             Save Changes
           </button>

@@ -45,7 +45,7 @@ export default function Blogsmain() {
       <div className="relative px-[2rem] lg:[5rem] mt-[5rem] pb-[10.5rem]">
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-4">
-            <p className="uppercase font-bold text-[1.5rem] text-white">
+            <p className="uppercase font-bold text-[1.3rem] lg:text-[2.0rem] text-white">
               Blogs
             </p>
             <p className="text-white">Add Blogs you provide</p>

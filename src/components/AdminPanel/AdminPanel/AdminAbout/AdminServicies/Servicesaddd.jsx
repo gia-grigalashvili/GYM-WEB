@@ -34,12 +34,12 @@ export default function Servicesaddd({ onemodal }) {
   };
 
   return (
-    <div className="p-[1.56rem] bg-[#323232] flex  items-center justify-center w-[21rem] lg:w-[55rem] h-auto rounded-[1.25rem]">
+    <div className="p-[1.56rem] lg:px-[2.56rem] bg-[#323232] flex items-center justify-center w-[20rem] lg:w-[55rem] rounded-[1.25rem]">
       <div className="px-[1.375rem] bg-black rounded-lg w-full py-[2.56rem]">
         <div className="flex w-full items-center justify-between pb-[2.56rem]">
           <div className="flex flex-col gap-4">
             <p className="uppercase font-bold text-[1.5rem] text-white">
-              Services
+              Add Blogs Services
             </p>
             <p className="text-white">Add services you provide</p>
           </div>
@@ -52,15 +52,15 @@ export default function Servicesaddd({ onemodal }) {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col  gap-3">
+          <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-white rounded-full"></div>
               <h2 className="text-white">Input Service Title</h2>
             </div>
-            <div className="flex flex-col ml-[1.44rem]">
+            <div className="flex flex-col ">
               <input
                 type="text"
-                className="w-full bg-[#323232] rounded-lg h-11 pl-[1.44rem] text-white"
+                className="w-full bg-[#323232] rounded-lg h-11  text-white"
                 placeholder="Weight Loss"
                 {...register("serviceText", {
                   required: "Service title is required",
@@ -82,7 +82,7 @@ export default function Servicesaddd({ onemodal }) {
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-4 pl-5">
+            <div className="flex flex-col lg:flex-row gap-4 ">
               <div className="flex flex-col mt-3 gap-2">
                 <label className="text-white">Single Session Price</label>
                 <input

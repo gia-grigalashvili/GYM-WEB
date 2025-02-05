@@ -1,10 +1,17 @@
 import React from "react";
 import Logo from "/public/imgs/Frame 61.png";
+import { useNavigate } from "react-router-dom";
 import { useFetchAbout } from "../../../hooks/useFetchAbout";
 export default function AdminHeader() {
   const { data } = useFetchAbout();
-
+  const navigate = useNavigate();
   const Image = data?.about?.at(-1)?.image;
+  const onSubmit = async () => {
+    sessionStorage.removeItem("adminLogin", true);
+
+    navigate("/admin");
+    window.location.reload();
+  };
   return (
     <div className="flex justify-between  py-10 px-10">
       <div className="flex gap-4">
@@ -18,6 +25,7 @@ export default function AdminHeader() {
             src={Image}
             alt="About avatar"
           />
+          <button onClick={onSubmit}>log out</button>
         </div>
       </div>
     </div>

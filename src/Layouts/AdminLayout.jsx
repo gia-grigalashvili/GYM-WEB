@@ -5,7 +5,7 @@ import AdminHeader from "../components/AdminPanel/Header/AdminHeader";
 import AdminPanel from "../components/AdminPanel/AdminPanel";
 
 export default function AdminLayout() {
-  const isLogined = !!sessionStorage.getItem("adminLogin");
+  const isLogined = sessionStorage.getItem("adminLogin");
 
   return (
     <div className="bg-[#121212]">

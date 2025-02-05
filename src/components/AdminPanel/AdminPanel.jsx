@@ -26,8 +26,10 @@ export default function AdminPanel() {
     resolver: yupResolver(shema),
   });
   const onSubmit = async () => {
-    sessionStorage.setItem("adminLogin", "true");
-    navigate("admin");
+    sessionStorage.setItem("adminLogin", true);
+
+    navigate("/admin/stories");
+    window.location.reload();
   };
   return (
     <div>

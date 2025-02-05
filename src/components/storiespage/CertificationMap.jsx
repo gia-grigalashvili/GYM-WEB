@@ -7,7 +7,7 @@ export default function CertificationMap({ endDate, name, startDate, id }) {
       {" "}
       <div
         key={id}
-        className="flex gap-[10px] items-center justify-between bg-[#323232] hover:bg-[#3e3e3e] p-6 rounded-lg shadow-xl cursor-pointer transform scale-100 hover:scale-105 transition-transform duration-300"
+        className="flex gap-[10px] items-center justify-between bg-[#323232] hover:bg-[#3e3e3e] p-6 rounded-lg shadow-xl cursor-pointer transform scale-100  transition-transform duration-300"
       >
         <span className="flex text-[#FFFFFF] leading-[21.8px]  text-[14px] items-center gap-2 w-[50%]">
           <div className="relative flex items-center justify-center">

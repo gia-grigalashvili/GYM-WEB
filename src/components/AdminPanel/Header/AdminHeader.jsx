@@ -18,15 +18,20 @@ export default function AdminHeader() {
         <img src={Logo} alt="Muscle logo" />
       </div>
 
-      <div className="flex  gap-6">
-        <div className="w-10 h-10 rounded-full">
+      <div className="flex items-center  gap-6">
+        <div className="w-10 flex  h-10 rounded-full">
           <img
             className="w-10 h-10 rounded-full"
             src={Image}
             alt="About avatar"
           />
-          <button onClick={onSubmit}>log out</button>
         </div>
+        <button
+          className="w-[100px] rounded-[70%] bg-[#ff1515] p-2"
+          onClick={onSubmit}
+        >
+          log out
+        </button>
       </div>
     </div>
   );

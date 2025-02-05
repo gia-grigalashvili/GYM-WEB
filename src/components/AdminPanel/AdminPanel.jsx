@@ -27,7 +27,7 @@ export default function AdminPanel() {
   });
   const onSubmit = async () => {
     sessionStorage.setItem("adminLogin", "true");
-    navigate("/admin/stories");
+    navigate("admin");
   };
   return (
     <div>
